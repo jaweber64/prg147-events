@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
+    <link rel="stylesheet" href="http://www.w3schools.com/lib/w3-theme-indigo.css">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <title>JavaScript Events</title>
+
+    <!-- DOM #1 (Script placed in header so it will run before page loads) -->
+    <script>
+        alert("I run before the HTML loads (DOM #1)");
+    </script>
+</head>
+
+<body id="docBody" onkeypress="displayPress()">
+<div class="w3-container w3-section w3-border w3-round-xlarge w3-border-indigo">
+    <header class="w3-panel w3-text-indigo" id="head">
+        <h1>JavaScript Events</h1>
+    </header>
+
+    <div class="w3-container w3-section w3-border w3-round-xlarge w3-border-indigo">
+        <h5>DOM #1 - alert box before page load.  DOM #2 - Alert box after page load.</h5>
+        <p align="center">Accomplished by script placement within html.</p>
+    </div>
+
+    <div class="w3-container w3-section w3-border w3-round-xlarge w3-border-indigo">
+        <h5>DOM #3 <code>onclick</code> and DOM #4 <code>ondblclick</code></h5>
+        <div align="center">
+            <p>Single click for date, then double click to clear.</p>
+            <button id="button1" onclick="myDate()" ondblclick="clearDate()">Current Date/Time</button>
+            <p id="currentdate"></p>
+        </div>
+    </div>
+    <hr>
+
+    <div class="w3-container w3-section w3-border w3-round-xlarge w3-border-indigo">
+        <h5>DOM #5 <code>onmouseover</code>, #6 <code>onmouseout</code>, #7 <code>onmouseenter</code>,
+            #8 <code>onmouseleave</code></h5>
+        <div align="center">
+            <p>Hover over the image, then move your mouse off of it</p>
+            <img src="cubsLogo1.png" alt="Chicago Cubs Logo (Blue Circle w/Red Cubs inside)"
+                 id="cubs" onmouseover="swap(1)" onmouseout="swap(2)"
+                 onmouseenter="displayMsg(1)" onmouseleave="displayMsg(2)">
+            <p id="cubsMsg"></p>
+        </div>
+    </div>
+
+    <div class="w3-container w3-section w3-border w3-round-xlarge w3-border-indigo">
+        <h5>DOM #9 <code>onresize</code></h5>
+        <p align="center">Resize the window width.  Background should change when shrinking or growing.</p>
+    </div>
+
+    <div class="w3-container w3-section w3-border w3-round-xlarge w3-border-indigo">
+        <h5>DOM #10 <code>onkeypress</code></h5>
+        <div align="center">
+        <p>Press any key.</p>
+        <p id="keypressed"></p>
+        </div>
+    </div>
+</div>
+
+<script>
+    function myDate() {
+        document.getElementById("currentdate").innerHTML = Date();
+    }
+
+    function clearDate() {
+        document.getElementById("currentdate").innerHTML = "";
+    }
+
+    function displayMsg(num) {
+        var mytext;
+        if (num == 1) mytext = "World Series Here We Come!";
+        else mytext = "";
+        document.getElementById("cubsMsg").innerHTML = mytext;
+    }
+
+    function swap(num) {
+        var imgfile;
+        if (num == 1) imgfile = "cubsLogo2.png";
+        else imgfile = "cubsLogo1.png";
+        document.getElementById("cubs").src = imgfile;
+    }
+
+    window.addEventListener("resize", changeBkgrnd);              // use an event listener
+    var savedw = document.getElementById("docBody").clientWidth;  // save the window width
+    function changeBkgrnd() {
+        var w = window.outerWidth;                                // get current window width
+
+        // Following code used for debugging.
+        //var mytext = "savedw: " + savedw + "  w: " + w;
+        //alert(mytext);
+
+        // if window shrinking then grey background, else image background.
+        if (w <= savedw) document.getElementById('docBody').style.background='grey';
+        //else document.getElementById('docBody').style.background='white';
+        else document.getElementById('docBody').style.backgroundImage='url("lgrey005.jpg")';
+
+        savedw = w;                                               // save current width
+    } // end of function changeBkgrnd
+
+    function displayPress() {
+        document.getElementById("keypressed").innerHTML = "You pressed a Key!!";
+    }
+
+</script>
+
+<!-- DOM #2 - placed here so it runs after page loads -->
+<script>
+    alert("I run after the HTML loads (DOM #2)");
+</script>
+
+
+</body>
+</html>

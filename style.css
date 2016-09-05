@@ -1,0 +1,39 @@
+/* CSS Document */
+
+.w3-container{
+    max-width: 1060px;
+    margin: 0 auto;
+}
+
+body {
+    font-family: "Comic Sans MS", Arial, Helvetica, sans-serif;
+    background-image: url("lgrey005.jpg");
+    box-sizing: border-box;
+    color: darkblue;
+}
+
+h1, h5{
+    font-family: "Comic Sans MS", Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    color: darkblue;
+}
+h1 {
+    text-align: center;
+}
+code {
+    color: black;
+    font-weight: normal;
+}
+
+#button1 {
+    background-color: red;
+    color: white;
+}
+
+#keypressed,
+#cubsMsg {
+    color: red;
+    font-weight: bold;
+    font-size: 2em;
+
+}
